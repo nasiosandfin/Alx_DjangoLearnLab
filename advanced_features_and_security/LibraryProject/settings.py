@@ -125,7 +125,8 @@ LOGIN_REDIRECT_URL = "list_books"
 LOGOUT_REDIRECT_URL = "login"
 
 
-AUTH_USER_MODEL = "relationship_app.CustomUser"
+# Point Django to your custom user model
+AUTH_USER_MODEL = "bookshelf.CustomUser"
 
 
 MEDIA_URL = "/media/"
