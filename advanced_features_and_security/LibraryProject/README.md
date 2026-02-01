@@ -24,3 +24,13 @@
 - Assign them to groups.
 - Verify that access is restricted/enabled based on permissions.
 
+
+
+# Security Best Practices in Django
+
+- DEBUG set to False in production.
+- Browser protections: SECURE_BROWSER_XSS_FILTER, X_FRAME_OPTIONS, SECURE_CONTENT_TYPE_NOSNIFF.
+- Cookies secured with CSRF_COOKIE_SECURE and SESSION_COOKIE_SECURE.
+- Forms include {% csrf_token %} to prevent CSRF attacks.
+- Views use Django ORM and forms to avoid SQL injection.
+- Content Security Policy can be added via django-csp middleware.
