@@ -85,3 +85,48 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+
+
+# Enforce HTTPS
+SECURE_SSL_REDIRECT = True
+
+# HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # one year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Secure cookies
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# Secure headers
+X_FRAME_OPTIONS = "DENY"
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+
+
+# ==============================
+# Security Settings for HTTPS
+# ==============================
+
+# Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True  
+
+# HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+# Secure Headers
+# Prevent clickjacking by disallowing framing
+X_FRAME_OPTIONS = "DENY"
+
+# Prevent browsers from MIME-sniffing
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Enable browser’s XSS protection
+SECURE_BROWSER_XSS_FILTER = True
