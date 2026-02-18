@@ -7,6 +7,8 @@ from .models import Book
 from .serializers import BookSerializer
 
 
+
+
 class BookListView(generics.ListAPIView):
     """
     Retrieves all books.
@@ -18,13 +20,10 @@ class BookListView(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     
-
-
-    filter_backends = [filters.DjangoFilterBackend, SearchFilter, filters.OrderingFilter]
+    filter_backends = [filters.DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['title', 'author', 'publication_year']
     search_fields = ['title', 'author__name']
-    ordering_fields = ['title', 'publication_year']
-
+    rdering_fields = ['title', 'publication_year']
 
 
 class BookDetailView(generics.RetrieveAPIView):
