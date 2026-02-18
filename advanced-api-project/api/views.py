@@ -6,6 +6,7 @@ from django_filters import rest_framework as filters
 from .models import Book
 from .serializers import BookSerializer
 
+
 class BookListView(generics.ListAPIView):
     """
     Retrieves all books.
@@ -16,18 +17,14 @@ class BookListView(generics.ListAPIView):
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    # Enable filtering, searching, and ordering
-    filter_backends = [filters.DjangoFilterBackend, SearchFilter, OrderingFilter]
+    
 
-    # Filtering options
+
+    filter_backends = [filters.DjangoFilterBackend, SearchFilter, filters.OrderingFilter]
     filterset_fields = ['title', 'author', 'publication_year']
-
-    # Search options
     search_fields = ['title', 'author__name']
-
-    # Ordering options
     ordering_fields = ['title', 'publication_year']
-    ordering = ['title']  # default ordering
+
 
 
 class BookDetailView(generics.RetrieveAPIView):
