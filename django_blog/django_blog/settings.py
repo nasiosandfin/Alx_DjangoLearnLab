@@ -157,3 +157,23 @@ TEMPLATES = [
     },
 ]
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+
+# Ensure templates DIRS includes app templates or project templates
+TEMPLATES = [
+    {
+        'DIRS': [BASE_DIR / 'templates'],
+        # other settings...
+    },
+]
+
+
+
+LOGIN_REDIRECT_URL = 'profile'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
