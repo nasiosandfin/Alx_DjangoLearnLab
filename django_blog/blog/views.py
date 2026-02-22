@@ -148,6 +148,7 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 from django.db.models import Q
+from django.views.generic import ListView
 
 class SearchResultsView(ListView):
     model = Post
@@ -169,4 +170,4 @@ class TagPostsView(ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        return Post.objects.filter(tags__name=self.kwargs['name'])
+        return Post.objects.filter(tags__name=self.kwargs['tag'])

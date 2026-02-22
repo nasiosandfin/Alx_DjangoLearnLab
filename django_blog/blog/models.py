@@ -51,3 +51,9 @@ class Tag(models.Model):
 class Post(models.Model):
     # existing fields...
     tags = models.ManyToManyField(Tag, related_name='posts', blank=True)
+
+from taggit.managers import TaggableManager
+
+class Post(models.Model):
+    # existing fields...
+    tags = TaggableManager()
