@@ -40,3 +40,16 @@ class CommentForm(forms.ModelForm):
         if not data:
             raise forms.ValidationError("Comment cannot be empty.")
         return data
+
+from .models import Post, Comment, Tag
+
+class PostForm(forms.ModelForm):
+    tags = forms.ModelMultipleChoiceField(
+        queryset=Tag.objects.all(),
+        required=False,
+        widget=forms.CheckboxSelectMultiple
+    )
+
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'tags']
