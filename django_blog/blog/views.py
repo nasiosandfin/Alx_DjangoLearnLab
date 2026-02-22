@@ -171,3 +171,4 @@ class TagPostsView(ListView):
 
     def get_queryset(self):
         return Post.objects.filter(tags__name=self.kwargs['tag'])
+

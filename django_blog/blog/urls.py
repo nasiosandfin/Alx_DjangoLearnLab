@@ -24,6 +24,6 @@ urlpatterns = [
 
 
 urlpatterns += [
-    path('tags/<str:tag>/', views.TagPostsView.as_view(), name='tag-posts'),
     path('search/', views.SearchResultsView.as_view(), name='search'),
+    path('tags/<str:tag>/', views.TagPostsView.as_view(), name='tag-posts'),
 ]
