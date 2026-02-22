@@ -172,3 +172,13 @@ class TagPostsView(ListView):
     def get_queryset(self):
         return Post.objects.filter(tags__name=self.kwargs['tag'])
 
+from django.views.generic import ListView
+from .models import Post
+
+class PostByTagListView(ListView):
+    model = Post
+    template_name = 'blog/tag_posts.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__slug=self.kwargs['tag_slug'])
