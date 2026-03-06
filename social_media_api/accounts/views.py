@@ -37,32 +37,33 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
 
 
-from rest_framework import status
+from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import get_user_model
 
-User = get_user_model()
+CustomUser = get_user_model()
 
-class FollowUserView(APIView):
+class FollowUserView(generics.GenericAPIView):
+    queryset = CustomUser.objects.all()
     permission_classes = [IsAuthenticated]
 
     def post(self, request, user_id):
         try:
-            target_user = User.objects.get(id=user_id)
+            target_user = CustomUser.objects.get(id=user_id)
             request.user.following.add(target_user)
             return Response({"message": f"You are now following {target_user.username}"}, status=status.HTTP_200_OK)
-        except User.DoesNotExist:
+        except CustomUser.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
-class UnfollowUserView(APIView):
+class UnfollowUserView(generics.GenericAPIView):
+    queryset = CustomUser.objects.all()
     permission_classes = [IsAuthenticated]
 
     def post(self, request, user_id):
         try:
-            target_user = User.objects.get(id=user_id)
+            target_user = CustomUser.objects.get(id=user_id)
             request.user.following.remove(target_user)
             return Response({"message": f"You unfollowed {target_user.username}"}, status=status.HTTP_200_OK)
-        except User.DoesNotExist:
+        except CustomUser.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
