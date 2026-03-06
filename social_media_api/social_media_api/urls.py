@@ -30,6 +30,11 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
 ]
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
+    path('', include('posts.urls')),  # add this
+]
 
 
 
