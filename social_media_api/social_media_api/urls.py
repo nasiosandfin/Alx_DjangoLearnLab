@@ -30,10 +30,13 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
 ]
 
+from django.contrib import admin
+from django.urls import path, include
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('', include('posts.urls')),  # add this
+    path('api/accounts/', include('accounts.urls')),   # ✅ accounts under /api/
+    path('api/', include('posts.urls')),               # ✅ posts/comments under /api/
 ]
 
 
